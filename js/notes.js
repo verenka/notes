@@ -74,8 +74,24 @@ $(function() {
         //click save after editing note
         document.getElementById("edited").onclick = function(){ save_edit_note() };
 
+        //Z to A Sorting
+        document.getElementById("zToA").onclick = function(){ sortDescending() };
+
+        //Z to A Sorting
+        document.getElementById("aToZ").onclick = function(){ get_data() };
 
 });
+
+function sortDescending() {
+        $.ajax({
+                url:'../NewFolder/person_list_descending.php', //php file contains code to get data from database and echo it to this url
+                dataType: 'json',
+                success: function(data) {
+                        people = data;
+                        show_list();
+                }
+        });
+}
 
 function save_edit_note() {
         edited_text = $("#edit_text").val();
