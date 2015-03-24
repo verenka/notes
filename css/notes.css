@@ -1,0 +1,11 @@
+.image_box {
+    float: left;
+}
+
+.detail_buttons {
+    float: left;
+}
+
+.detail_hr {
+    clear:left;
+}
