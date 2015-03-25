@@ -23,7 +23,7 @@
   <div data-role="page" data-control-title="my_list" data-theme="d" id="my_list">
       <div data-theme="d" data-role="header">
           <a data-role="button" data-inline="true" href="#searchpage" data-icon="search"
-             data-iconpos="right" class="ui-btn-left">
+             data-iconpos="right" class="ui-btn-left" id="search_button">
               search
           </a>
           <h1>
@@ -51,48 +51,58 @@
 
 
   <!-- SEARCH -->
-  <div data-role="page" data-control-title="search" data-theme="d" id="searchpage">
-      <div data-theme="d" data-role="header">
-          <h1>
-              my list -&gt; search
-          </h1>
-      </div>
-      <div data-role="content">
-          <div data-role="fieldcontain" data-controltype="searchinput">
-              <input name="search" id="searchfield" placeholder="search term" value=""
-              type="search">
-          </div>
-          <input id="searchbutton" data-inline="true" data-icon="search" data-iconpos="left"
-          value="search" data-mini="true" type="submit">
-          <input data-inline="true" data-icon="search" data-iconpos="left" value="search tags"
-          data-mini="true" type="submit">
-          <hr style="height:3px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;">
-          <h2>
-              search results
-          </h2>
-          <div class="searchresultname" data-controltype="textblock">
-              <p>
-                  firstname lastname
-              </p>
-          </div>
-          <div class="searchresultdate" data-controltype="textblock">
-              <address>
-                  12.12.2020
-              </address>
-          </div>
-          <div class="searchresulttext" data-controltype="textblock">
-              <p>
-                  notetext blindtext...&nbsp;notetext blindtext...notetext blindtext...notetext
-                  blindtext...notetext blindtext...notetext blindtext...notetext blindtext...
-              </p>
-          </div>
-          <div>
-              <a class="tag" href="#page5" data-transition="fade">
-                  schlagwort
-              </a>
-          </div>
-      </div>
-  </div>
+<div data-role="page" data-control-title="search" data-theme="d" id="searchpage">
+    <div data-theme="d" data-role="header">
+        <h1 id="search_header">
+            my list -&gt; search
+        </h1>
+    </div>
+    <div data-role="content">
+        <div data-controltype="textblock">
+            <p>
+                Search through your notes:
+            </p>
+        </div>
+        <div data-role="fieldcontain" data-controltype="searchinput">
+            <input name="search" id="searchfield" placeholder="search term" value=""
+                   type="search">
+        </div>
+        <input id="searchbutton" data-inline="true" data-icon="search" data-iconpos="left"
+               value="search" data-mini="true" type="submit">
+        <div data-role="fieldcontain" data-controltype="selectmenu">
+            <select id="searchtag" name="" data-mini="true">
+                <option value="choose a tag">choose a tag</option>
+            </select>
+        </div>
+        <input id="searchtagbutton" data-inline="true" data-icon="search" data-iconpos="left"
+               value="search tags" data-mini="true" type="submit">
+        <hr style="height:3px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;">
+        <h2>
+            search results
+        </h2>
+        <div class="searchresultname" data-controltype="textblock">
+            <p>
+                firstname lastname
+            </p>
+        </div>
+        <div class="searchresultdate" data-controltype="textblock">
+            <address>
+                12.12.2020
+            </address>
+        </div>
+        <div class="searchresulttext" data-controltype="textblock">
+            <p>
+                notetext blindtext...&nbsp;notetext blindtext...notetext blindtext...notetext
+                blindtext...notetext blindtext...notetext blindtext...notetext blindtext...
+            </p>
+        </div>
+        <div>
+            <a class="tag" href="#page5" data-transition="fade">
+                schlagwort
+            </a>
+        </div>
+    </div>
+</div>
 
 
   <!-- DETAIL PAGE -->

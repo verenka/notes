@@ -80,7 +80,29 @@ $(function() {
         //Z to A Sorting
         document.getElementById("aToZ").onclick = function(){ get_data() };
 
+        //Click on search loads all tags for menu on search page
+        document.getElementById("search_button").onclick = function(){ get_tag_list() };
+
 });
+
+function get_tag_list() {
+        $.ajax({
+                url:'../NewFolder/get_tag_list.php', //php file contains code to get data from database and echo it to this url
+                dataType: 'json',
+                success: function(data) {
+                        tag_list = data;
+                        display_tag_list(tag_list);
+                }
+        });
+}
+
+function display_tag_list(tag_list) {
+        $('#searchtag').empty();
+        tag_list.forEach(function(tag){
+                $('#searchtag').append('<option value="' + tag.tag + '">' + tag.tag + '</option>');
+        });
+
+}
 
 function sortDescending() {
         $.ajax({
@@ -233,6 +255,10 @@ function show_detail(person_detail) {
         //display name on edit note page
         $("#edit_note_name").empty();
         $("#edit_note_name").append("Edit note for " + person_detail.fname + " " + person_detail.lname);
+
+        //display search header
+        $("#search_header").html("<a href='#my_list' class='refresh'>my list</a> -> search");
+
 
 }
 
