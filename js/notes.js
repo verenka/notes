@@ -62,14 +62,14 @@ $(function() {
 
         });
 
-        //click save after edit. WHY OH WHY YOU NO WORK?! trying js now instead of jquery
+        // For some reason the jQuery doesn't work here, and always registers a click as soon as the page has loaded.
+        // so instead I use good old fashioned js here.
 
+        //click save after edit.
         document.getElementById("save_edit").onclick = function(){ edit_person() };
-
 
         //click save after adding note
         document.getElementById("save_note").onclick = function(){ add_note() };
-
 
         //click save after editing note
         document.getElementById("edited").onclick = function(){ save_edit_note() };
@@ -83,7 +83,64 @@ $(function() {
         //Click on search loads all tags for menu on search page
         document.getElementById("search_button").onclick = function(){ get_tag_list() };
 
+        //Get notes with selected tag when clicking search tags
+        document.getElementById("searchtagbutton").onclick = function(){ get_tag_search_results() };
+
+        //Search through notes when clicking search
+        document.getElementById("searchbutton").onclick = function(){ get_search_results() };
+
 });
+
+
+// SEARCH THROUGH NOTES
+
+function get_search_results() {
+        var searchword = $('#searchfield').val();
+        $.ajax({
+                url:'../NewFolder/get_search_results.php?word=' + searchword, //php file contains code to get data from database and echo it to this url
+                dataType: 'json',
+                success: function(data) {
+                        search_result_notes = data;
+                        display_search_result_notes(search_result_notes);
+
+                }
+        });
+}
+
+
+// TAG SEARCH AND DISPLAY //
+
+
+function get_tag_search_results() {
+        var tagname = $('#searchtag').val();
+        $.ajax({
+                url:'../NewFolder/get_tag_search_results.php?tag=' + tagname, //php file contains code to get data from database and echo it to this url
+                dataType: 'json',
+                success: function(data) {
+                        search_result_notes = data;
+                        display_search_result_notes(search_result_notes);
+
+                }
+        });
+}
+
+function display_search_result_notes(search_result_notes) {
+        $("#result_container").empty();
+
+        search_result_notes.forEach(function(notes_text){
+                $("#result_container").append(
+                        '<div class="searchresultname" data-controltype="textblock"><p>'
+                        + notes_text.fname + ' ' + notes_text.lname + '</p></div>' +
+                        "<h5>" + notes_text.date + "</h5>" +                                  //the note's date
+                        "<p>" + notes_text.note_text + '</p>' +                               // the full text of the note
+                        '<p>Tags: ' + notes_text.tag + '</p>' +
+                        '<hr class="notes_hr" style="height:2px; background-color:#ccc; border:0; margin-top:10px; margin-bottom:10px;">'
+                );
+        })
+
+}
+
+// TAG LIST AND DISPLAY
 
 function get_tag_list() {
         $.ajax({
@@ -99,10 +156,13 @@ function get_tag_list() {
 function display_tag_list(tag_list) {
         $('#searchtag').empty();
         tag_list.forEach(function(tag){
-                $('#searchtag').append('<option value="' + tag.tag + '">' + tag.tag + '</option>');
+                $('#searchtag').append('<option value="' + tag.tagname + '">' + tag.tag + '</option>');
         });
 
 }
+
+
+// SORT FUNCTION
 
 function sortDescending() {
         $.ajax({
@@ -115,6 +175,8 @@ function sortDescending() {
         });
 }
 
+
+// ADD, EDIT AND SAVE NOTES
 function save_edit_note() {
         edited_text = $("#edit_text").val();
         edited_tag = $("#edit_tag").val();
@@ -171,6 +233,7 @@ function add_note() {
 
 }
 
+// GET PEOPLE FROM DATABASE AND DISPLAY
 function get_data() {
         $.ajax({
                 url:'../NewFolder/person_list.php', //php file contains code to get data from database and echo it to this url
@@ -199,6 +262,8 @@ function show_list() {
                 });
 }
 
+
+//GET DETAIL VIEW AND DISPLAY
 
 function get_detail(id) {
         var person_by_id_url = '../NewFolder/person_by_id.php?id=' + id;
@@ -259,9 +324,10 @@ function show_detail(person_detail) {
         //display search header
         $("#search_header").html("<a href='#my_list' class='refresh'>my list</a> -> search");
 
-
 }
 
+
+// EDIT PEOPLE
 function edit_person() {
         edit_id = $("#edit_id").val();
         edit_fname = $("#edit_fname").val();
@@ -287,6 +353,8 @@ function edit_person() {
         });
 }
 
+
+// GET AND DISPLAY NOTES
 
 function get_notes(id) {
         var notes_by_person_id_url = '../NewFolder/notes_by_person_id.php?id=' + id;
@@ -331,6 +399,9 @@ function display_notes(notes_text) {
         }
 }
 
+
+// DELETE FUNCTIONS
+
 function delete_person(id) {
 
         var delete_url = '../NewFolder/delete_person.php?id=' + id;
@@ -364,6 +435,9 @@ function delete_note(id) {
         });
 
 }
+
+
+// EDIT NOTES AND DISPLAY
 
 function edit_note(id) {
         var notes_by_person_id_url = '../NewFolder/get_note_by_note_id.php?id=' + id;

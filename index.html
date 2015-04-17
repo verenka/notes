@@ -80,26 +80,9 @@
         <h2>
             search results
         </h2>
-        <div class="searchresultname" data-controltype="textblock">
-            <p>
-                firstname lastname
-            </p>
-        </div>
-        <div class="searchresultdate" data-controltype="textblock">
-            <address>
-                12.12.2020
-            </address>
-        </div>
-        <div class="searchresulttext" data-controltype="textblock">
-            <p>
-                notetext blindtext...&nbsp;notetext blindtext...notetext blindtext...notetext
-                blindtext...notetext blindtext...notetext blindtext...notetext blindtext...
-            </p>
-        </div>
-        <div>
-            <a class="tag" href="#page5" data-transition="fade">
-                schlagwort
-            </a>
+        <div id="result_container">
+        <!-- results will be displayed by display_tag_search_result_notes function in js -->
+
         </div>
     </div>
 </div>
@@ -270,7 +253,7 @@
               <label for="edit_note">
                   note
               </label>
-              <textarea name="addnote" id="edit_text" placeholder=""></textarea>
+              <textarea name="edit_text" id="edit_text" placeholder=""></textarea>
           </div>
           <div class="edittag" data-role="fieldcontain" data-controltype="textinput">
               <label for="edit_tag">
