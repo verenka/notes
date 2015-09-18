@@ -3,8 +3,9 @@ $fname = htmlspecialchars($_GET["fname"]);
 $lname = htmlspecialchars($_GET["lname"]);
 $picture = htmlspecialchars($_GET["picture"]);
 
+
 function add_person($fname, $lname, $picture) {
-include 'dbconnect.php';  
+include 'dbconnect.php';
   
 $query = "INSERT INTO Person (id, fname, lname, picture) VALUES (NULL,'".$fname."', '".$lname."', '".$picture."')";
 
