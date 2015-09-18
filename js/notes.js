@@ -18,7 +18,7 @@ $(function() {
                         var filename = $('#fileinput1').val().replace("C:\\fakepath\\", "");
 
                         $.ajax({
-                                url:'../NewFolder/add_person.php?fname='
+                                url:'php/add_person.php?fname='
                                         + $('#add_fname').val()
                                         + '&lname=' + $('#add_lname').val()
                                         + '&picture=' + filename,
@@ -47,7 +47,7 @@ $(function() {
                         var form_data = new FormData();
                         form_data.append('file', file_data);
                         $.ajax({
-                                url: '../php/upload.php', // point to server-side PHP script
+                                url: 'php/upload.php', // point to server-side PHP script
                                 dataType: 'text',  // what to expect back from the PHP script, if anything
                                 cache: false,
                                 contentType: false,
@@ -97,7 +97,7 @@ $(function() {
 function get_search_results() {
         var searchword = $('#searchfield').val();
         $.ajax({
-                url:'../php/get_search_results.php?word=' + searchword, //php file contains code to get data from database and echo it to this url
+                url:'php/get_search_results.php?word=' + searchword, //php file contains code to get data from database and echo it to this url
                 dataType: 'json',
                 success: function(data) {
                         search_result_notes = data;
@@ -114,7 +114,7 @@ function get_search_results() {
 function get_tag_search_results() {
         var tagname = $('#searchtag').val();
         $.ajax({
-                url:'../php/get_tag_search_results.php?tag=' + tagname, //php file contains code to get data from database and echo it to this url
+                url:'php/get_tag_search_results.php?tag=' + tagname, //php file contains code to get data from database and echo it to this url
                 dataType: 'json',
                 success: function(data) {
                         search_result_notes = data;
@@ -144,7 +144,7 @@ function display_search_result_notes(search_result_notes) {
 
 function get_tag_list() {
         $.ajax({
-                url:'../php/get_tag_list.php', //php file contains code to get data from database and echo it to this url
+                url:'php/get_tag_list.php', //php file contains code to get data from database and echo it to this url
                 dataType: 'json',
                 success: function(data) {
                         tag_list = data;
@@ -166,7 +166,7 @@ function display_tag_list(tag_list) {
 
 function sortDescending() {
         $.ajax({
-                url:'../php/person_list_descending.php', //php file contains code to get data from database and echo it to this url
+                url:'php/person_list_descending.php', //php file contains code to get data from database and echo it to this url
                 dataType: 'json',
                 success: function(data) {
                         people = data;
@@ -183,7 +183,7 @@ function save_edit_note() {
         note_id = $("#note_id").val();
         person_id = $("#edit_id").val();
 
-        query_url = '../NewFolder/edit_note.php?id=' + note_id
+        query_url = 'php/edit_note.php?id=' + note_id
                 + '&note_text=' + edited_text
                 + '&tag=' + edited_tag;
 
@@ -208,7 +208,7 @@ function add_note() {
         person_id = $("#edit_id").val();
 
         $.ajax({
-                url:'../php/add_note.php?note_text=' +
+                url:'php/add_note.php?note_text=' +
                 note_text + '&tag='
                 + tag
                 + '&person_id=' + person_id
@@ -236,7 +236,7 @@ function add_note() {
 // GET PEOPLE FROM DATABASE AND DISPLAY
 function get_data() {
         $.ajax({
-                url:'../php/person_list.php', //php file contains code to get data from database and echo it to this url
+                url:'php/person_list.php', //php file contains code to get data from database and echo it to this url
                 dataType: 'json',
                 success: function(data) {
                         people = data;
@@ -266,7 +266,7 @@ function show_list() {
 //GET DETAIL VIEW AND DISPLAY
 
 function get_detail(id) {
-        var person_by_id_url = '../php/person_by_id.php?id=' + id;
+        var person_by_id_url = 'php/person_by_id.php?id=' + id;
 
         $.ajax({
                 url: person_by_id_url, //php file contains code to get data from database and echo it to this url
@@ -335,7 +335,7 @@ function edit_person() {
         // edit_pic = $('#edit_pic').val().replace("C:\\fakepath\\", "");
 
         $.ajax({
-                url:'../php/edit_person.php?id=' +
+                url:'php/edit_person.php?id=' +
                     edit_id + '&fname='
                 + edit_fname
                 + '&lname=' + edit_lname
@@ -357,7 +357,7 @@ function edit_person() {
 // GET AND DISPLAY NOTES
 
 function get_notes(id) {
-        var notes_by_person_id_url = '../php/notes_by_person_id.php?id=' + id;
+        var notes_by_person_id_url = 'php/notes_by_person_id.php?id=' + id;
 
         $.ajax({
                 url: notes_by_person_id_url, //php file contains code to get notes from database and echo it to this url
@@ -404,7 +404,7 @@ function display_notes(notes_text) {
 
 function delete_person(id) {
 
-        var delete_url = '../php/delete_person.php?id=' + id;
+        var delete_url = 'php/delete_person.php?id=' + id;
         $.ajax({
                 url: delete_url ,
                 type: 'GET',
@@ -421,7 +421,7 @@ function delete_person(id) {
 
 function delete_note(id) {
         person_id = $("#edit_id").val();
-        var delete_note_url = '../php/delete_note.php?id=' + id;
+        var delete_note_url = 'php/delete_note.php?id=' + id;
         $.ajax({
                 url: delete_note_url ,
                 type: 'GET',
@@ -440,7 +440,7 @@ function delete_note(id) {
 // EDIT NOTES AND DISPLAY
 
 function edit_note(id) {
-        var notes_by_person_id_url = '../php/get_note_by_note_id.php?id=' + id;
+        var notes_by_person_id_url = 'php/get_note_by_note_id.php?id=' + id;
 
         $.ajax({
                 url: notes_by_person_id_url, //php file contains code to get notes from database and echo it to this url
