@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf5b267b-5775-46ba-85b0-b70765669541" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/notes_by_person_id.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/person_by_id.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/person_list.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/person_list_descending.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/search.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/php/upload.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/heidi_aria.jpeg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php/dbconnect.php" afterPath="$PROJECT_DIR$/php/dbconnect.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/notes.js" afterPath="$PROJECT_DIR$/js/notes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="notes.iws" />
@@ -268,7 +259,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442579135724</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixed some more paths, created a new db and updated the db connection">
+      <created>1442580561404</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1442580561404</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -313,7 +310,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="wth was i thinking? moved php files into the project, corrected path" />
-    <option name="LAST_COMMIT_MESSAGE" value="wth was i thinking? moved php files into the project, corrected path" />
+    <MESSAGE value="fixed some more paths, created a new db and updated the db connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some more paths, created a new db and updated the db connection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
